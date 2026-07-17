@@ -1,11 +1,9 @@
-import shoe1 from '../../assets/shoe1.jpg'
-
-function ProductCard(){
+function ProductCard({name , img , heading , price}){
     return(
     <div className="product-card flex flex-col gap-4 group cursor-pointer">
         <div className="relative w-full aspect-4/5 bg-surface-container  overflow-hidden shadow-sm transition-shadow hover:shadow-xl">
             <div className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-110" 
-                style={{backgroundImage: `url(${shoe1})` }}>
+                style={{backgroundImage: `url(${img})` }}>
             </div>
 
             <div className="product-overlay absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -16,9 +14,9 @@ function ProductCard(){
             </div>
         </div>
         <div className="flex flex-col items-start gap-1 px-1">
-            <p className="font-body-lg font-bold uppercase tracking-tight text-primary">Jordan nike 1</p>    
-            <p className="font-body-md text-on-surface-variant opacity-70">Matte Black / Tech Mesh</p>
-            <p className="font-body-md mt-1">$185.00</p>
+            <p className="font-body-lg font-bold uppercase tracking-tight text-primary">{name}</p>    
+            <p className="font-body-md text-on-surface-variant opacity-70">{heading}</p>
+            <p className="font-body-md mt-1">${price}.00</p>
         </div>
     </div>
     )

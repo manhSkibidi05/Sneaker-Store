@@ -1,7 +1,9 @@
 import ProductCard from '../components/ui/ProductCard'
 import ButtonAll from '../components/ui/ButtonAll'
+import {useProduct} from '../hooks/useProduct'
 
 function Home(){
+    const {products , dispatch} = useProduct()
 
     return(
         <>
@@ -16,14 +18,15 @@ function Home(){
                         <div className="border-b border-surface-container-highest pb-stack-md">
                             <h3 className="font-label-sm text-label-sm uppercase tracking-widest mb-stack-md">Size</h3>
                             <div className="grid grid-cols-4 gap-2">
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">38</button>
-                                <button className="border border-primary bg-primary text-on-primary py-2 text-caption">39</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">40</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">41</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">42</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">43</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">44</button>
-                                <button className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">45</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-primary bg-primary text-on-primary py-2 text-caption">ALL</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">38</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">39</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">40</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">41</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">42</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">43</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">44</button>
+                                <button onClick={(e) => dispatch({type : 'Size-filter' , payload : e.target.value})} className="border border-surface-container-highest py-2 text-caption hover:border-primary transition-colors">45</button>
                             </div>
                         </div>
                         {/* <!-- Color Filter --> */}
@@ -59,12 +62,11 @@ function Home(){
                 </aside>
                 <div className='flex-1'>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
+                        {
+                            products.map(product => 
+                                <ProductCard key={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading}></ProductCard>
+                            )
+                        }
                     </div>
                     <div className='mt-16 flex justify-center'>
                         <ButtonAll>

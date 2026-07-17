@@ -1,11 +1,22 @@
 import {createContext , useReducer } from 'react';
+import shoe1 from '../assets/shoe1.jpg'
+import shoe2 from '../assets/shoe2.jpg'
+import shoe3 from '../assets/shoe3.jpg'
+import shoe4 from '../assets/shoe4.jpg'
+import shoe5 from '../assets/shoe5.jpg'
+import shoe6 from '../assets/shoe6.jpg'
+import shoe7 from '../assets/shoe7.jpg'
+import shoe8 from '../assets/shoe8.jpg'
 
 export const ProductContext = createContext();
 
 const initialProducts = [
     {
         id: 1,
-        name: "NIKE AIR MAX",
+        name: "NIKE DUNK LOW",
+        price : 185,
+        heading : 'Panda / For Sports',
+        img : shoe1, 
         sizes: [
         {
             size: 38,
@@ -40,7 +51,10 @@ const initialProducts = [
     },
     {
         id: 2,
-        name: "ADIDAS SUPERNOVA",
+        name: "AIR JORDAN 1",
+        price : 285,
+        heading : 'Mixing Color / Tech Mech',
+        img : shoe2,
         sizes: [
         {
             size: 39,
@@ -75,7 +89,10 @@ const initialProducts = [
     },
     {
         id: 3,
-        name: "PUMA RACER",
+        name: "VANS DAMIER",
+        price : 385,
+        heading : 'Caro Color / Amazing',
+        img : shoe3,
         sizes: [
         {
             size: 38,
@@ -109,7 +126,10 @@ const initialProducts = [
     },
     {
         id: 4,
-        name: "NEW BALANCE 574",
+        name: "NEW BALANCE 878",
+        price : 265,
+        heading : 'Pure White / Full Grain',
+        img : shoe4,
         sizes: [
         {
             size: 39,
@@ -144,6 +164,9 @@ const initialProducts = [
     {
         id: 5,
         name: "ASICS GEL-KAYANO",
+        price : 320,
+        heading : 'Charcoal / Reflective',
+        img : shoe5,
         sizes: [
         {
             size: 38,
@@ -177,7 +200,10 @@ const initialProducts = [
     },
     {
         id: 6,
-        name: "REEBOK NANO",
+        name: "NIKE DUNK LOW 2",
+        price : 410,
+        heading : 'Light Navy / Calfskin',
+        img : shoe6,
         sizes: [
         {
             size: 39,
@@ -211,7 +237,10 @@ const initialProducts = [
     },
     {
         id: 7,
-        name: "CONVERSE CHUCK",
+        name: "CONVERSE CHUCK LOW",
+        price : 125,
+        heading : 'Vintage Vibe / All Star',
+        img : shoe7,
         sizes: [
         {
             size: 38,
@@ -245,7 +274,10 @@ const initialProducts = [
     },
     {
         id: 8,
-        name: "VANS OLD SKOOL",
+        name: "CONVERSE CHUCK HIGH",
+        price : 290,
+        heading : 'Vintage Vibe / Deep Brown',
+        img : shoe8,
         sizes: [
         {
             size: 39,
@@ -280,7 +312,17 @@ const initialProducts = [
 ];
 
 const reducer = (state , action) => {
+    switch(action.type){
+        case 'Size-filter' : {
+            
+        }
 
+        case 'Color-filter': {
+
+        }
+        
+
+    }
 }   
 
 export function ProductProvider({children}){
