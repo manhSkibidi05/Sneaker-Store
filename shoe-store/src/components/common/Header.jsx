@@ -1,6 +1,6 @@
 // src/components/common/Header.jsx
 import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart, FaUser , FaSearch} from 'react-icons/fa'
+import { FaShoppingCart, FaUser , FaSearch } from 'react-icons/fa'
 // import { useCart } from '../../hooks/useCart'; // custom hook lấy từ CartContext
 
 const Header = () => {

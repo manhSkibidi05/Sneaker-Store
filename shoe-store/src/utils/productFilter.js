@@ -1,7 +1,9 @@
 function productFilter (products , filter){
-    const {size , color , minPrice , maxPrice} = filter;
+    const {size , color , minPrice , maxPrice , page} = filter;
 
     return products.filter(product => {
+        if(page !== product.page) return false;
+
         if(minPrice !== null && product.price < minPrice) return false;
         if(maxPrice !== null && product.price > maxPrice) return false;
 

@@ -4,7 +4,8 @@ const initialFilter = {
     size : null,
     color : null,
     minPrice : null,
-    maxPrice : null
+    maxPrice : null,
+    page : 1
 }
 
 const reducer = (state , action) => {
@@ -28,6 +29,25 @@ const reducer = (state , action) => {
                 maxPrice : action.payload.maxPrice 
             }
         };
+
+        case 'Prev-filter' : {
+            if(state.page === 1) return state;
+            return{
+                ...state,
+                page : state.page - 1
+            }
+        }
+
+        case 'Next-filter' : {
+            return{
+                ...state,
+                page : state.page + 1
+            }
+        }
+
+        case 'Clear-filters' : {
+            return initialFilter
+        }
         default : 
             return state;
     }

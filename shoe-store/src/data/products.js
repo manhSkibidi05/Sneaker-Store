@@ -14,6 +14,7 @@ export const products = [
         price : 185,
         heading : 'Panda / For Sports',
         img : shoe1, 
+        page : 1,
         sizes: [
         {
             size: 38,
@@ -52,6 +53,7 @@ export const products = [
         price : 285,
         heading : 'Mixing Color / Tech Mech',
         img : shoe2,
+        page : 1,
         sizes: [
         {
             size: 39,
@@ -90,6 +92,7 @@ export const products = [
         price : 385,
         heading : 'Caro Color / Amazing',
         img : shoe3,
+        page : 1,
         sizes: [
         {
             size: 38,
@@ -127,6 +130,7 @@ export const products = [
         price : 265,
         heading : 'Pure White / Full Grain',
         img : shoe4,
+        page : 1,
         sizes: [
         {
             size: 39,
@@ -164,6 +168,7 @@ export const products = [
         price : 320,
         heading : 'Charcoal / Reflective',
         img : shoe5,
+        page : 1,
         sizes: [
         {
             size: 38,
@@ -201,6 +206,7 @@ export const products = [
         price : 410,
         heading : 'Light Navy / Calfskin',
         img : shoe6,
+        page : 1,
         sizes: [
         {
             size: 39,
@@ -238,6 +244,7 @@ export const products = [
         price : 125,
         heading : 'Vintage Vibe / All Star',
         img : shoe7,
+        page : 2,
         sizes: [
         {
             size: 38,
@@ -275,6 +282,7 @@ export const products = [
         price : 290,
         heading : 'Vintage Vibe / Deep Brown',
         img : shoe8,
+        page : 2,
         sizes: [
         {
             size: 39,
