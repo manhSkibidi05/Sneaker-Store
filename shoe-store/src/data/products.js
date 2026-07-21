@@ -1,3 +1,4 @@
+// import ảnh vào 1 biến sẽ lưu trữ đường dẫn sau đó chỉ việc gọi và sử dụng 
 import shoe1 from '../assets/shoe1.jpg'
 import shoe2 from '../assets/shoe2.jpg'
 import shoe3 from '../assets/shoe3.jpg'
@@ -7,6 +8,8 @@ import shoe6 from '../assets/shoe6.jpg'
 import shoe7 from '../assets/shoe7.jpg'
 import shoe8 from '../assets/shoe8.jpg'
 
+// mảng sản phẩm lưu trữ arr và obj lồng nhau có các trường dữ liệu sau : 
+// + tên , giá , ảnh , trang , mảng kích thước , màu sắc , số lượng còn lại 
 export const products = [
     {
         id: 1,

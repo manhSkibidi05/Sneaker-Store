@@ -1,11 +1,9 @@
 // src/components/common/Header.jsx
 import { Link, NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUser , FaSearch } from 'react-icons/fa'
-// import { useCart } from '../../hooks/useCart'; // custom hook lấy từ CartContext
+
 
 const Header = () => {
-    // const { cart } = useCart();
-    // const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
     <header className="w-full top-0 sticky z-50 bg-surface dark:bg-background border-b border-surface-container-highest dark:border-outline-variant transition-all duration-300 ease-in-out">
@@ -17,19 +15,46 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-stack-lg">
           <NavLink
             to="/"
-            className="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary transition-colors"
+            className={({ isActive }) =>
+              `font-body-md text-body-md uppercase tracking-widest transition-colors relative 
+                after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 
+              after:bg-primary after:origin-left after:transition-transform after:duration-300 after:ease-in-out
+              ${
+                isActive
+                  ? 'text-primary after:scale-x-50'
+                  : 'text-on-surface-variant dark:text-outline hover:text-primary after:scale-x-0'
+              }`
+            }
           >
             HOME
           </NavLink>
           <NavLink
-            to="/"
-            className="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary transition-colors"
+            to="about"
+            className={({ isActive }) =>
+              `font-body-md text-body-md uppercase tracking-widest transition-colors relative 
+                  after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 
+              after:bg-primary after:origin-left after:transition-transform after:duration-300 after:ease-in-out
+              ${
+                isActive
+                  ? 'text-primary after:scale-x-50'
+                  : 'text-on-surface-variant dark:text-outline hover:text-primary after:scale-x-0'
+              }`
+            }
           >
             ABOUT
           </NavLink>
           <NavLink
-            to="/"
-            className="font-body-md text-body-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary transition-colors"
+            to="contact"
+            className={({ isActive }) =>
+              `font-body-md text-body-md uppercase tracking-widest transition-colors relative 
+                after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 
+              after:bg-primary after:origin-left after:transition-transform after:duration-300 after:ease-in-out
+              ${
+                isActive
+                  ? 'text-primary after:scale-x-50'
+                  : 'text-on-surface-variant dark:text-outline hover:text-primary after:scale-x-0'
+              }`
+            }
           >
             CONTACT
           </NavLink>

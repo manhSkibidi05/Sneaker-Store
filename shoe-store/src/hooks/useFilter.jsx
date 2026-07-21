@@ -1,5 +1,7 @@
+// custom hook : sử dụng use reducer để quản lý state lọc -> Dùng để chứa state filter giúp hiện thị giữ liệu hợp lí dựa trên điều kiện lọc của người dùng 
 import {useReducer} from 'react'
 
+// + trạng thái lọc ban đầu : mặc định chưa có lọc bất kì sản phẩm nào 
 const initialFilter = {
     size : null,
     color : null,
@@ -8,6 +10,7 @@ const initialFilter = {
     page : 1
 }
 
+// + hàm xử lí hành động gửi về thông qua dispatch -> hàm này dựa trên state trước đó và thông tin từ action gồm type và payload từ đó tạo ra state mới dựa trên dữ liệu đó
 const reducer = (state , action) => {
     switch(action.type){
         case 'Size-filter' : {
@@ -53,6 +56,7 @@ const reducer = (state , action) => {
     }
 } 
 
+// + custom hook useFilter trả về đối tượng gồm filter chứa state lọc và dispatch hàm thay đổi state dựa trên hành động của người dùng 
 export function useFilter(){
     const [filter , dispatch] = useReducer(reducer , initialFilter);
 
