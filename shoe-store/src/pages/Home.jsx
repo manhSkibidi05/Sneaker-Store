@@ -2,7 +2,7 @@ import ProductCard from '../components/ui/ProductCard'
 import ButtonAll from '../components/ui/ButtonAll'
 import NoResults from '../components/ui/NoResults'
 import { useProduct } from '../hooks/useProduct'
-import { useFilter } from '../hooks/useFilter'
+import  useFilter  from '../hooks/useFilter'
 import productFilter from '../utils/productFilter'
 import {FaCheck } from 'react-icons/fa'
 
@@ -89,7 +89,7 @@ function Home(){
                                             <div className={`w-4 h-4 border border-outline group-hover:border-primary transition-colors flex items-center justify-center ${filter.minPrice === price.min ? 'bg-primary' : ''}` }>
                                                 { filter.minPrice === price.min ? <FaCheck className="w-3 h-3 text-surface-bright" /> : ''}
                                             </div>
-                                            <span className="text-body-md text-on-surface-variant group-hover:text-primary">${`${price.min} - ${price.max}`}$</span>
+                                            <span className="text-body-md text-on-surface-variant group-hover:text-primary">${`${price.min} - $${price.max}`}</span>
                                         </li>
                                     )
                                 }

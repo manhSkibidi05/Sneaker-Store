@@ -2,8 +2,11 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import CartDrawer from './CartDrawer';
+import useCartUI from '../../hooks/useCartUI';
 
 const Layout = () => {
+    const {isOpen} = useCartUI()
     return (
         <div className="bg-surface text-on-background font-body-md selection:bg-primary-fixed selection:text-primary">
             <Header />
@@ -11,7 +14,8 @@ const Layout = () => {
                 <Outlet /> 
             </main>
             <Footer />
-    </div>
+            {isOpen ? <CartDrawer></CartDrawer> :''}
+        </div>
     );
 };
 

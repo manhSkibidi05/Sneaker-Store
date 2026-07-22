@@ -2,7 +2,7 @@
 // -> Hàm này cần dữ liệu gồm mảng sản phẩm và state lọc dữ liệu từ đó xử lí các trường hợp lọc tồn tại trong state trả về mảng sản phẩm đã được lọc 
 
 function productFilter (products , filter){
-    const {size , color , minPrice , maxPrice , page} = filter;
+    const {size , color , minPrice , maxPrice , page , keyword} = filter;
 
     // + sử dụng phương thức tĩnh filter lọc dữ liệu -> trả về mảng mới với những phần tử trong mảng t/m điều kiện của hàm callback 
     return products.filter(
@@ -10,6 +10,8 @@ function productFilter (products , filter){
         product => {
         // + kiểm tra các trường dữ liệu từ trên xuống dưới -> kiểm tra xem nếu state lọc này đã tồn tại chưa nếu tồn tại rồi sẽ kiểm tra với các trường của product 
         if(page !== product.page) return false;
+
+        if(keyword.trim() !== '' && !product.name.toLowerCase().includes(keyword.trim().toLowerCase())) return false;
 
         if(minPrice !== null && product.price < minPrice) return false;
         if(maxPrice !== null && product.price > maxPrice) return false;

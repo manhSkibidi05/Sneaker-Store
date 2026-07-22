@@ -100,7 +100,6 @@ export const products = [
         {
             size: 38,
             colors: [
-            { color: "red", stock: 15 },
             { color: "black", stock: 10 },
             ],
         },
@@ -114,7 +113,6 @@ export const products = [
         {
             size: 42,
             colors: [
-            { color: "red", stock: 12 },
             { color: "gray", stock: 9 },
             ],
         },
