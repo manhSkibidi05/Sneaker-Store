@@ -1,4 +1,8 @@
-function ProductCard({name , img , heading , price}){
+import useCart from '../../hooks/useCart'
+
+function ProductCard({id, name , img , heading , price , size , color}){
+    const {dispatch} = useCart();
+
     return(
     <div className="product-card flex flex-col gap-4 group cursor-pointer">
         <div className="relative w-full aspect-4/5 bg-surface-container  overflow-hidden shadow-sm transition-shadow hover:shadow-xl">
@@ -7,9 +11,11 @@ function ProductCard({name , img , heading , price}){
             </div>
 
             <div className="product-overlay absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <button className="product-btn w-full bg-primary text-on-primary py-3  font-bold text-sm tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-800 transition-all">
+                <button 
+                onClick={() => dispatch({type : 'Add-to-cart', payload : {id , size , color}})}
+                className="cursor-pointer w-full bg-primary text-on-primary py-3  font-bold text-sm tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-800 transition-all">
                     <span className="material-symbols-outlined text-base">shopping_cart</span>
-                        ADD TO CART
+                        ADD TO CART 
                 </button>
             </div>
         </div>

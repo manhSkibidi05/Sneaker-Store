@@ -1,8 +1,8 @@
 import ProductCard from '../components/ui/ProductCard'
 import ButtonAll from '../components/ui/ButtonAll'
 import NoResults from '../components/ui/NoResults'
-import { useProduct } from '../hooks/useProduct'
-import  useFilter  from '../hooks/useFilter'
+import useProduct from '../hooks/useProduct'
+import useFilter from '../hooks/useFilter'
 import productFilter from '../utils/productFilter'
 import {FaCheck } from 'react-icons/fa'
 
@@ -111,7 +111,9 @@ function Home(){
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
                             {
                                 productsFilter.map(product => 
-                                    <ProductCard key={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading}></ProductCard>
+                                    <ProductCard key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading} 
+                                    size={filter.size} color={filter.color}>
+                                    </ProductCard>
                                 )
                             }
                             </div>

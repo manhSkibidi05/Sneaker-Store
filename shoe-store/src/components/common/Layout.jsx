@@ -6,7 +6,7 @@ import CartDrawer from './CartDrawer';
 import useCartUI from '../../hooks/useCartUI';
 
 const Layout = () => {
-    const {isOpen} = useCartUI()
+    const {isOpen , closeCart} = useCartUI()
     return (
         <div className="bg-surface text-on-background font-body-md selection:bg-primary-fixed selection:text-primary">
             <Header />
@@ -14,7 +14,8 @@ const Layout = () => {
                 <Outlet /> 
             </main>
             <Footer />
-            {isOpen ? <CartDrawer></CartDrawer> :''}
+            {/* Đặt component giỏ hàng ở layout bao phủ toàn bộ trang web -> truyền xuống trạng thái và hành động đóng cho giỏ hàng bằng props */}
+            <CartDrawer isOpen={isOpen} closeCart={closeCart}></CartDrawer> 
         </div>
     );
 };
