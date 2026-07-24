@@ -29,23 +29,22 @@ export const products = [
         {
             size: 40,
             colors: [
-            { color: "black", stock: 3 },
-            { color: "red", stock: 2 },
-            { color: "white", stock: 10 },
+            { color: "black", stock: 0 },
+            { color: "white", stock: 8 },
             ],
         },
         {
             size: 42,
             colors: [
-            { color: "black", stock: 7 },
-            { color: "gray", stock: 4 },
+            { color: "black", stock: 5 },
+            { color: "white", stock: 0 },
             ],
         },
         {
             size: 44,
             colors: [
-            { color: "white", stock: 6 },
-            { color: "blue", stock: 1 },
+            { color: "black", stock: 5 },
+            { color: "white", stock: 8 },
             ],
         },
         ],
@@ -61,30 +60,33 @@ export const products = [
         {
             size: 39,
             colors: [
-            { color: "gray", stock: 12 },
-            { color: "blue", stock: 5 },
-            ],
-        },
-        {
-            size: 41,
-            colors: [
             { color: "black", stock: 8 },
             { color: "white", stock: 9 },
             { color: "red", stock: 3 },
             ],
         },
         {
+            size: 41,
+            colors: [
+            { color: "black", stock: 8 },
+            { color: "white", stock: 0 },
+            { color: "red", stock: 3 },
+            ],
+        },
+        {
             size: 43,
             colors: [
-            { color: "gray", stock: 6 },
-            { color: "blue", stock: 7 },
+            { color: "black", stock: 8 },
+            { color: "white", stock: 9 },
+            { color: "red", stock: 0 },
             ],
         },
         {
             size: 45,
             colors: [
-            { color: "black", stock: 4 },
-            { color: "white", stock: 2 },
+            { color: "black", stock: 8 },
+            { color: "white", stock: 9 },
+            { color: "red", stock: 3 },
             ],
         },
         ],
@@ -100,7 +102,8 @@ export const products = [
         {
             size: 38,
             colors: [
-            { color: "black", stock: 10 },
+            { color: "white", stock: 8 },
+            { color: "blue", stock: 6 },
             ],
         },
         {
@@ -113,14 +116,15 @@ export const products = [
         {
             size: 42,
             colors: [
-            { color: "gray", stock: 9 },
+            { color: "white", stock: 0 },
+            { color: "blue", stock: 6 },
             ],
         },
         {
             size: 44,
             colors: [
-            { color: "black", stock: 5 },
-            { color: "white", stock: 7 },
+            { color: "white", stock: 8 },
+            { color: "blue", stock: 0 },
             ],
         },
         ],
@@ -136,28 +140,32 @@ export const products = [
         {
             size: 39,
             colors: [
-            { color: "blue", stock: 20 },
-            { color: "gray", stock: 14 },
+            { color: "gray", stock: 6 },
+            { color: "white", stock: 13 },
+            { color: "black", stock: 9 },
             ],
         },
         {
             size: 41,
             colors: [
-            { color: "black", stock: 11 },
+            { color: "gray", stock: 6 },
             { color: "white", stock: 13 },
+            { color: "black", stock: 0 },
             ],
         },
         {
             size: 43,
             colors: [
-            { color: "blue", stock: 8 },
-            { color: "red", stock: 4 },
+            { color: "gray", stock: 0 },
+            { color: "white", stock: 13 },
+            { color: "black", stock: 9 },
             ],
         },
         {
             size: 45,
             colors: [
             { color: "gray", stock: 6 },
+            { color: "white", stock: 13 },
             { color: "black", stock: 9 },
             ],
         },
@@ -174,8 +182,9 @@ export const products = [
         {
             size: 38,
             colors: [
-            { color: "white", stock: 18 },
-            { color: "black", stock: 12 },
+            { color: "blue", stock: 7 },
+            { color: "gray", stock: 10 },
+            { color: "red", stock: 5 },
             ],
         },
         {
@@ -183,20 +192,23 @@ export const products = [
             colors: [
             { color: "blue", stock: 7 },
             { color: "gray", stock: 10 },
+            { color: "red", stock: 0 },
             ],
         },
         {
             size: 42,
             colors: [
+            { color: "blue", stock: 0 },
+            { color: "gray", stock: 10 },
             { color: "red", stock: 5 },
-            { color: "white", stock: 9 },
             ],
         },
         {
             size: 44,
             colors: [
-            { color: "black", stock: 3 },
-            { color: "blue", stock: 6 },
+            { color: "blue", stock: 7 },
+            { color: "gray", stock: 10 },
+            { color: "red", stock: 5 },
             ],
         },
         ],
@@ -212,22 +224,22 @@ export const products = [
         {
             size: 39,
             colors: [
-            { color: "black", stock: 7 },
-            { color: "red", stock: 2 },
+            { color: "white", stock: 4 },
+            { color: "gray", stock: 5 },
             ],
         },
         {
             size: 41,
             colors: [
-            { color: "gray", stock: 8 },
-            { color: "white", stock: 11 },
+            { color: "white", stock: 4 },
+            { color: "gray", stock: 5 },
             ],
         },
         {
             size: 43,
             colors: [
-            { color: "blue", stock: 9 },
-            { color: "black", stock: 6 },
+            { color: "white", stock: 4 },
+            { color: "gray", stock: 5 },
             ],
         },
         {
@@ -257,22 +269,22 @@ export const products = [
         {
             size: 40,
             colors: [
-            { color: "red", stock: 15 },
-            { color: "blue", stock: 10 },
+            { color: "white", stock: 25 },
+            { color: "black", stock: 0 },
             ],
         },
         {
             size: 42,
             colors: [
-            { color: "white", stock: 18 },
-            { color: "gray", stock: 12 },
+            { color: "white", stock: 25 },
+            { color: "black", stock: 20 },
             ],
         },
         {
             size: 44,
             colors: [
-            { color: "black", stock: 8 },
-            { color: "red", stock: 5 },
+            { color: "white", stock: 25 },
+            { color: "black", stock: 20 },
             ],
         },
         ],
@@ -285,34 +297,30 @@ export const products = [
         img : shoe8,
         page : 2,
         sizes: [
-        {
-            size: 39,
-            colors: [
-            { color: "black", stock: 14 },
-            { color: "white", stock: 16 },
-            ],
-        },
-        {
-            size: 41,
-            colors: [
-            { color: "gray", stock: 10 },
-            { color: "blue", stock: 8 },
-            ],
-        },
-        {
-            size: 43,
-            colors: [
-            { color: "red", stock: 7 },
-            { color: "black", stock: 9 },
-            ],
-        },
-        {
-            size: 45,
-            colors: [
-            { color: "white", stock: 6 },
-            { color: "gray", stock: 4 },
-            ],
-        },
+            {
+                ver:'8v1' , size: 39, color: "white", stock: 6
+            },
+            {
+                ver:'8v2' , size: 39, color: "gray", stock: 4
+            },
+            {
+                ver:'8v3' , size: 41, color: "white", stock: 6
+            },
+            {
+                ver:'8v4' , size: 41, color: "gray", stock: 4
+            },
+            {
+                ver:'8v5' , size: 43, color: "white", stock: 6
+            },
+            {
+                ver:'8v6' , size: 43, color: "gray", stock: 4
+            },
+            {
+                ver:'8v7' , size: 45, color: "white", stock: 6
+            },
+            {
+                ver:'8v8' , size: 45, color: "gray", stock: 4
+            },
         ],
     },
 ];

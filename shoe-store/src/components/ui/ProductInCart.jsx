@@ -1,5 +1,5 @@
 
-function ProductInCart({name , price , img , size , color}){
+function ProductInCart({name , price , img , size , color , variants}){
 
     const takeColor = (color) => {
         switch(color){
@@ -31,16 +31,25 @@ function ProductInCart({name , price , img , size , color}){
                         <div className="flex flex-col gap-1">
                             <div className="flex flex-col gap-3 mt-1">
                                 <div className="flex flex-wrap gap-1">
-                                    <button className="w-7 h-7 flex items-center justify-center border border-surface-container-highest text-[10px] hover:border-primary transition-colors">{size}</button>
-                                    {/* <button className="w-7 h-7 flex items-center justify-center border border-primary bg-primary text-on-primary text-[10px]">39</button>
-                                    <button className="w-7 h-7 flex items-center justify-center border border-surface-container-highest text-[10px] hover:border-primary transition-colors">40</button>
-                                    <button className="w-7 h-7 flex items-center justify-center border border-surface-container-highest text-[10px] hover:border-primary transition-colors">41</button>
-                                    <button className="w-7 h-7 flex items-center justify-center border border-surface-container-highest text-[10px] hover:border-primary transition-colors">42</button> */}
+                                    {
+                                        variants.map(variant => 
+                                            <button key={variant.size} 
+                                            className={`w-7 h-7 flex items-center justify-center border  text-[10px]  transition-colors 
+                                            ${variant.size === size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest hover:border-primary'} `}>{variant.size}
+                                            </button>
+                                        )
+                                    }
                                 </div>
                                 <div className="flex gap-2">
-                                    <button className={`w-4 h-4 rounded-full ${takeColor(color)} border border-surface-container-highest hover:ring-1 ring-offset-1 ring-primary transition-all`}></button>
-                                    {/* <button className="w-4 h-4 rounded-full bg-white border border-primary ring-1 ring-offset-1 ring-primary transition-all"></button>
-                                    <button className="w-4 h-4 rounded-full bg-black border border-surface-container-highest hover:ring-1 ring-offset-1 ring-primary transition-all"></button> */}
+                                    {
+                                        variants.find(variant => variant.size === size).colors.map(colorObj => 
+                                            <button key={colorObj.color}
+                                            className={`w-4 h-4 rounded-full ${takeColor(colorObj.color)} border border-surface-container-highest ring-offset-1 ring-primary transition-all
+                                            ${colorObj.color === color ? 'ring-1' : 'hover:ring-1'}
+                                            ${colorObj.stock === 0 ? 'opacity-10 pointer-events-none cursor-not-allowed' : 'cursor-pointer'}`}>
+                                            </button>
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>

@@ -51,10 +51,12 @@ function Home(){
                         <div className="border-b border-surface-container-highest pb-stack-md">
                             <h3 className="font-label-sm text-label-sm uppercase tracking-widest mb-stack-md">Size</h3>
                             <div className="grid grid-cols-4 gap-2">
-                                <button onClick={() => dispatch({type : 'Size-filter' , payload : null})} className={`border py-2 cursor-pointer text-caption transition-colors ${filter.size === null ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest  hover:border-primary'}`}>ALL</button>
+                                <button onClick={() => dispatch({type : 'Size-filter' , payload : null})} 
+                                className={`border py-2 cursor-pointer text-caption transition-colors ${filter.size === null ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest  hover:border-primary'}`}>ALL</button>
                                 {
                                     sizes.map(size => 
-                                        <button key={size} onClick={() => dispatch({type : 'Size-filter' , payload : size})} className={`border py-2 cursor-pointer text-caption transition-colors ${filter.size === size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest  hover:border-primary'}`}>{size}</button>
+                                        <button key={size} onClick={() => dispatch({type : 'Size-filter' , payload : size})} 
+                                        className={`border py-2 cursor-pointer text-caption transition-colors ${filter.size === size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest  hover:border-primary'}`}>{size}</button>
                                     )
                                 }
                                 
@@ -64,10 +66,12 @@ function Home(){
                         <div className="border-b border-surface-container-highest pb-stack-md">
                             <h3 className="font-label-sm text-label-sm uppercase tracking-widest mb-stack-md">Color</h3>
                             <div className="flex flex-wrap gap-2">
-                                <button onClick={() => dispatch({type : 'Color-filter' , payload : null})} className={`w-6 h-6 cursor-pointer  border border-surface-container-highest ring-offset-2 ring-primary transition-all ${filter.color === null ? 'ring-1' : 'hover:ring-1' }`}></button>
+                                <button onClick={() => dispatch({type : 'Color-filter' , payload : null})} 
+                                className={`w-6 h-6 cursor-pointer  border border-surface-container-highest ring-offset-2 ring-primary transition-all ${filter.color === null ? 'ring-1' : 'hover:ring-1' }`}></button>
                                 {
                                     colors.map(color => 
-                                        <button key={color} onClick={() => dispatch({type : 'Color-filter' , payload : color})} className={`w-6 h-6 cursor-pointer ${takeColor(color)}  border border-surface-container-highest ring-offset-2 ring-primary transition-all ${filter.color === color ? 'ring-1' : 'hover:ring-1' }`}></button>
+                                        <button key={color} onClick={() => dispatch({type : 'Color-filter' , payload : color})} 
+                                        className={`w-6 h-6 cursor-pointer ${takeColor(color)}  border border-surface-container-highest ring-offset-2 ring-primary transition-all ${filter.color === color ? 'ring-1' : 'hover:ring-1' }`}></button>
                                     )
                                 }
                                 
@@ -112,7 +116,7 @@ function Home(){
                             {
                                 productsFilter.map(product => 
                                     <ProductCard key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading} 
-                                    size={filter.size} color={filter.color}>
+                                    size={filter.size} color={filter.color} variants={product.sizes} >
                                     </ProductCard>
                                 )
                             }

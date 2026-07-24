@@ -4,7 +4,6 @@ import NoResults from '../ui/NoResults';
 
 function CartDrawer({isOpen , closeCart}){
     const {cart , dispatch} = useCart();
-    console.log(cart)
 
     return(
         <div className={
@@ -35,11 +34,12 @@ function CartDrawer({isOpen , closeCart}){
                 {/* <!-- Cart Items --> */}
                 <div className="flex-1 overflow-y-auto px-margin-desktop py-stack-lg space-y-stack-lg hide-scrollbar">
                     {
-                        cart.length === 0 ? 
+                        cart.items.length === 0 ? 
                         <NoResults></NoResults>
                         : 
-                        cart.map(product => 
-                            <ProductInCart key={product.id} name={product.name} price={product.price} img={product.img} size={product.size} color={product.color} ></ProductInCart>
+                        cart.items.map(item => 
+                            <ProductInCart key={item.data.id} name={item.data.name} price={item.data.price} img={item.data.img} size={item.data.size} color={item.data.color}
+                            variants={item.variants}></ProductInCart>
                         )
                     }
                     

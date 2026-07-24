@@ -1,6 +1,6 @@
 import useCart from '../../hooks/useCart'
 
-function ProductCard({id, name , img , heading , price , size , color}){
+function ProductCard({id, name , img , heading , price , size , color , variants}){
     const {dispatch} = useCart();
 
     return(
@@ -12,7 +12,7 @@ function ProductCard({id, name , img , heading , price , size , color}){
 
             <div className="product-overlay absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                 <button 
-                onClick={() => dispatch({type : 'Add-to-cart', payload : {id , size , color}})}
+                onClick={() => dispatch({type : 'Add-cart', payload : {id ,img, name ,price , size , color , variants}})}
                 className="cursor-pointer w-full bg-primary text-on-primary py-3  font-bold text-sm tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-800 transition-all">
                     <span className="material-symbols-outlined text-base">shopping_cart</span>
                         ADD TO CART 
