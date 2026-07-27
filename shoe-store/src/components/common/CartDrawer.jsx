@@ -38,7 +38,7 @@ function CartDrawer({isOpen , closeCart}){
                         <NoResults></NoResults>
                         : 
                         cart.items.map(item => 
-                            <ProductInCart key={item.data.id} name={item.data.name} price={item.data.price} img={item.data.img} size={item.data.size} color={item.data.color}
+                            <ProductInCart key={item.data.id} name={item.data.name} price={item.data.price} img={item.data.img} variant={item.data.variant}
                             variants={item.variants}></ProductInCart>
                         )
                     }

@@ -114,9 +114,9 @@ function Home(){
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
                             {
-                                productsFilter.map(product => 
+                                productsFilter.map((product , index) => 
                                     <ProductCard key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading} 
-                                    size={filter.size} color={filter.color} variants={product.sizes} >
+                                    variant={product.variant} variants={stateProducts[index].variants}>
                                     </ProductCard>
                                 )
                             }

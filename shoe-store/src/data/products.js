@@ -18,35 +18,15 @@ export const products = [
         heading : 'Panda / For Sports',
         img : shoe1, 
         page : 1,
-        sizes: [
-        {
-            size: 38,
-            colors: [
-            { color: "black", stock: 5 },
-            { color: "white", stock: 8 },
-            ],
-        },
-        {
-            size: 40,
-            colors: [
-            { color: "black", stock: 0 },
-            { color: "white", stock: 8 },
-            ],
-        },
-        {
-            size: 42,
-            colors: [
-            { color: "black", stock: 5 },
-            { color: "white", stock: 0 },
-            ],
-        },
-        {
-            size: 44,
-            colors: [
-            { color: "black", stock: 5 },
-            { color: "white", stock: 8 },
-            ],
-        },
+        variants: [
+            { ver: '1v1', size: 38, color: "black", stock: 0 },
+            { ver: '1v2', size: 38, color: "white", stock: 8 },
+            { ver: '1v3', size: 40, color: "black", stock: 0 },
+            { ver: '1v4', size: 40, color: "white", stock: 8 },
+            { ver: '1v5', size: 42, color: "black", stock: 5 },
+            { ver: '1v6', size: 42, color: "white", stock: 0 },
+            { ver: '1v7', size: 44, color: "black", stock: 5 },
+            { ver: '1v8', size: 44, color: "white", stock: 8 },
         ],
     },
     {
@@ -56,39 +36,19 @@ export const products = [
         heading : 'Mixing Color / Tech Mech',
         img : shoe2,
         page : 1,
-        sizes: [
-        {
-            size: 39,
-            colors: [
-            { color: "black", stock: 8 },
-            { color: "white", stock: 9 },
-            { color: "red", stock: 3 },
-            ],
-        },
-        {
-            size: 41,
-            colors: [
-            { color: "black", stock: 8 },
-            { color: "white", stock: 0 },
-            { color: "red", stock: 3 },
-            ],
-        },
-        {
-            size: 43,
-            colors: [
-            { color: "black", stock: 8 },
-            { color: "white", stock: 9 },
-            { color: "red", stock: 0 },
-            ],
-        },
-        {
-            size: 45,
-            colors: [
-            { color: "black", stock: 8 },
-            { color: "white", stock: 9 },
-            { color: "red", stock: 3 },
-            ],
-        },
+        variants: [
+            { ver: '2v1', size: 39, color: "black", stock: 8 },
+            { ver: '2v2', size: 39, color: "white", stock: 9 },
+            { ver: '2v3', size: 39, color: "red", stock: 3 },
+            { ver: '2v4', size: 41, color: "black", stock: 8 },
+            { ver: '2v5', size: 41, color: "white", stock: 0 },
+            { ver: '2v6', size: 41, color: "red", stock: 3 },
+            { ver: '2v7', size: 43, color: "black", stock: 8 },
+            { ver: '2v8', size: 43, color: "white", stock: 9 },
+            { ver: '2v9', size: 43, color: "red", stock: 0 },
+            { ver: '2v10', size: 45, color: "black", stock: 8 },
+            { ver: '2v11', size: 45, color: "white", stock: 9 },
+            { ver: '2v12', size: 45, color: "red", stock: 3 },
         ],
     },
     {
@@ -98,35 +58,15 @@ export const products = [
         heading : 'Caro Color / Amazing',
         img : shoe3,
         page : 1,
-        sizes: [
-        {
-            size: 38,
-            colors: [
-            { color: "white", stock: 8 },
-            { color: "blue", stock: 6 },
-            ],
-        },
-        {
-            size: 40,
-            colors: [
-            { color: "white", stock: 8 },
-            { color: "blue", stock: 6 },
-            ],
-        },
-        {
-            size: 42,
-            colors: [
-            { color: "white", stock: 0 },
-            { color: "blue", stock: 6 },
-            ],
-        },
-        {
-            size: 44,
-            colors: [
-            { color: "white", stock: 8 },
-            { color: "blue", stock: 0 },
-            ],
-        },
+        variants: [
+            { ver: '3v1', size: 38, color: "white", stock: 8 },
+            { ver: '3v2', size: 38, color: "blue", stock: 6 },
+            { ver: '3v3', size: 40, color: "white", stock: 8 },
+            { ver: '3v4', size: 40, color: "blue", stock: 6 },
+            { ver: '3v5', size: 42, color: "white", stock: 0 },
+            { ver: '3v6', size: 42, color: "blue", stock: 6 },
+            { ver: '3v7', size: 44, color: "white", stock: 8 },
+            { ver: '3v8', size: 44, color: "blue", stock: 0 },
         ],
     },
     {
@@ -136,39 +76,19 @@ export const products = [
         heading : 'Pure White / Full Grain',
         img : shoe4,
         page : 1,
-        sizes: [
-        {
-            size: 39,
-            colors: [
-            { color: "gray", stock: 6 },
-            { color: "white", stock: 13 },
-            { color: "black", stock: 9 },
-            ],
-        },
-        {
-            size: 41,
-            colors: [
-            { color: "gray", stock: 6 },
-            { color: "white", stock: 13 },
-            { color: "black", stock: 0 },
-            ],
-        },
-        {
-            size: 43,
-            colors: [
-            { color: "gray", stock: 0 },
-            { color: "white", stock: 13 },
-            { color: "black", stock: 9 },
-            ],
-        },
-        {
-            size: 45,
-            colors: [
-            { color: "gray", stock: 6 },
-            { color: "white", stock: 13 },
-            { color: "black", stock: 9 },
-            ],
-        },
+        variants: [
+            { ver: '4v1', size: 39, color: "gray", stock: 6 },
+            { ver: '4v2', size: 39, color: "white", stock: 13 },
+            { ver: '4v3', size: 39, color: "black", stock: 9 },
+            { ver: '4v4', size: 41, color: "gray", stock: 6 },
+            { ver: '4v5', size: 41, color: "white", stock: 13 },
+            { ver: '4v6', size: 41, color: "black", stock: 0 },
+            { ver: '4v7', size: 43, color: "gray", stock: 0 },
+            { ver: '4v8', size: 43, color: "white", stock: 13 },
+            { ver: '4v9', size: 43, color: "black", stock: 9 },
+            { ver: '4v10', size: 45, color: "gray", stock: 6 },
+            { ver: '4v11', size: 45, color: "white", stock: 13 },
+            { ver: '4v12', size: 45, color: "black", stock: 9 },
         ],
     },
     {
@@ -178,39 +98,19 @@ export const products = [
         heading : 'Charcoal / Reflective',
         img : shoe5,
         page : 1,
-        sizes: [
-        {
-            size: 38,
-            colors: [
-            { color: "blue", stock: 7 },
-            { color: "gray", stock: 10 },
-            { color: "red", stock: 5 },
-            ],
-        },
-        {
-            size: 40,
-            colors: [
-            { color: "blue", stock: 7 },
-            { color: "gray", stock: 10 },
-            { color: "red", stock: 0 },
-            ],
-        },
-        {
-            size: 42,
-            colors: [
-            { color: "blue", stock: 0 },
-            { color: "gray", stock: 10 },
-            { color: "red", stock: 5 },
-            ],
-        },
-        {
-            size: 44,
-            colors: [
-            { color: "blue", stock: 7 },
-            { color: "gray", stock: 10 },
-            { color: "red", stock: 5 },
-            ],
-        },
+        variants: [
+            { ver: '5v1', size: 38, color: "blue", stock: 7 },
+            { ver: '5v2', size: 38, color: "gray", stock: 10 },
+            { ver: '5v3', size: 38, color: "red", stock: 5 },
+            { ver: '5v4', size: 40, color: "blue", stock: 7 },
+            { ver: '5v5', size: 40, color: "gray", stock: 10 },
+            { ver: '5v6', size: 40, color: "red", stock: 0 },
+            { ver: '5v7', size: 42, color: "blue", stock: 0 },
+            { ver: '5v8', size: 42, color: "gray", stock: 10 },
+            { ver: '5v9', size: 42, color: "red", stock: 5 },
+            { ver: '5v10', size: 44, color: "blue", stock: 7 },
+            { ver: '5v11', size: 44, color: "gray", stock: 10 },
+            { ver: '5v12', size: 44, color: "red", stock: 5 },
         ],
     },
     {
@@ -220,35 +120,15 @@ export const products = [
         heading : 'Light Navy / Calfskin',
         img : shoe6,
         page : 1,
-        sizes: [
-        {
-            size: 39,
-            colors: [
-            { color: "white", stock: 4 },
-            { color: "gray", stock: 5 },
-            ],
-        },
-        {
-            size: 41,
-            colors: [
-            { color: "white", stock: 4 },
-            { color: "gray", stock: 5 },
-            ],
-        },
-        {
-            size: 43,
-            colors: [
-            { color: "white", stock: 4 },
-            { color: "gray", stock: 5 },
-            ],
-        },
-        {
-            size: 45,
-            colors: [
-            { color: "white", stock: 4 },
-            { color: "gray", stock: 5 },
-            ],
-        },
+        variants: [
+            { ver:'6v1' , size: 38, color: "white", stock: 6 },
+            { ver:'6v2' , size: 38, color: "blue", stock: 0 },
+            { ver:'6v3' , size: 42, color: "white", stock: 0 },
+            { ver:'6v4' , size: 42, color: "blue", stock: 0 },
+            { ver:'6v5' , size: 43, color: "white", stock: 6 },
+            { ver:'6v6' , size: 43, color: "blue", stock: 4 },
+            { ver:'6v7' , size: 45, color: "white", stock: 6 },
+            { ver:'6v8' , size: 45, color: "blue", stock: 4 },
         ],
     },
     {
@@ -258,35 +138,15 @@ export const products = [
         heading : 'Vintage Vibe / All Star',
         img : shoe7,
         page : 2,
-        sizes: [
-        {
-            size: 38,
-            colors: [
-            { color: "white", stock: 25 },
-            { color: "black", stock: 20 },
-            ],
-        },
-        {
-            size: 40,
-            colors: [
-            { color: "white", stock: 25 },
-            { color: "black", stock: 0 },
-            ],
-        },
-        {
-            size: 42,
-            colors: [
-            { color: "white", stock: 25 },
-            { color: "black", stock: 20 },
-            ],
-        },
-        {
-            size: 44,
-            colors: [
-            { color: "white", stock: 25 },
-            { color: "black", stock: 20 },
-            ],
-        },
+        variants: [
+            { ver:'7v1' , size: 37, color: "black", stock: 6 },
+            { ver:'7v2' , size: 37, color: "blue", stock: 0 },
+            { ver:'7v3' , size: 40, color: "black", stock: 0 },
+            { ver:'7v4' , size: 40, color: "blue", stock: 0 },
+            { ver:'7v5' , size: 43, color: "black", stock: 6 },
+            { ver:'7v6' , size: 43, color: "blue", stock: 4 },
+            { ver:'7v7' , size: 45, color: "black", stock: 6 },
+            { ver:'7v8' , size: 45, color: "blue", stock: 4 },
         ],
     },
     {
@@ -296,31 +156,15 @@ export const products = [
         heading : 'Vintage Vibe / Deep Brown',
         img : shoe8,
         page : 2,
-        sizes: [
-            {
-                ver:'8v1' , size: 39, color: "white", stock: 6
-            },
-            {
-                ver:'8v2' , size: 39, color: "gray", stock: 4
-            },
-            {
-                ver:'8v3' , size: 41, color: "white", stock: 6
-            },
-            {
-                ver:'8v4' , size: 41, color: "gray", stock: 4
-            },
-            {
-                ver:'8v5' , size: 43, color: "white", stock: 6
-            },
-            {
-                ver:'8v6' , size: 43, color: "gray", stock: 4
-            },
-            {
-                ver:'8v7' , size: 45, color: "white", stock: 6
-            },
-            {
-                ver:'8v8' , size: 45, color: "gray", stock: 4
-            },
+        variants: [
+            { ver:'8v1' , size: 39, color: "white", stock: 6 },
+            { ver:'8v2' , size: 39, color: "gray", stock: 0 },
+            { ver:'8v3' , size: 41, color: "white", stock: 0 },
+            { ver:'8v4' , size: 41, color: "gray", stock: 0 },
+            { ver:'8v5' , size: 43, color: "white", stock: 6 },
+            { ver:'8v6' , size: 43, color: "gray", stock: 4 },
+            { ver:'8v7' , size: 45, color: "white", stock: 6 },
+            { ver:'8v8' , size: 45, color: "gray", stock: 4 },
         ],
     },
 ];

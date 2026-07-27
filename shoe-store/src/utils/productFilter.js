@@ -1,38 +1,67 @@
 // + Hàm tiện ích sử dụng dữ liệu để tính toán trả về dữ liệu mới 
-// -> Hàm này cần dữ liệu gồm mảng sản phẩm và state lọc dữ liệu từ đó xử lí các trường hợp lọc tồn tại trong state trả về mảng sản phẩm đã được lọc 
+// -> Hàm này cần dữ liệu gồm mảng sản phẩm và state lọc dữ liệu từ đó xử lí các trường hợp lọc tồn tại trong state trả về mảng sản phẩm đã được lọc
+import shoe1 from '../assets/shoe1.jpg'
+import shoe2 from '../assets/shoe2.jpg'
+import shoe3 from '../assets/shoe3.jpg'
+import shoe4 from '../assets/shoe4.jpg'
+import shoe5 from '../assets/shoe5.jpg'
+import shoe6 from '../assets/shoe6.jpg'
+import shoe7 from '../assets/shoe7.jpg'
+import shoe8 from '../assets/shoe8.jpg' 
 
-function productFilter (products , filter){
+const getVariant = (product, size, color) => {
+    // Nếu không có yêu cầu size và color -> lấy variant đầu tiên
+    if (size === null && color === null) {
+        return product.variants[0] || null;
+    }
+
+    // Nếu có size, không có color -> tìm variant theo size
+    if (size !== null && color === null) {
+        return product.variants.find(v => v.size === size) || null;
+    }
+
+    // Nếu có color, không có size -> tìm variant theo color
+    if (size === null && color !== null) {
+        return product.variants.find(v => v.color === color) || null;
+    }
+
+    // Nếu có cả size và color -> tìm khớp cả hai
+    return product.variants.find(v => v.size === size && v.color === color) || null;
+};
+
+export function productFilter (products , filter){
     const {size , color , minPrice , maxPrice , page , keyword} = filter;
-
-    // + sử dụng phương thức tĩnh filter lọc dữ liệu -> trả về mảng mới với những phần tử trong mảng t/m điều kiện của hàm callback 
-    return products.filter(
-        // + product là 1 phần tử trong mảng nếu dữ liệu bên trong product trả về true thì sẽ lấy phần từ này sang mảng mới , nếu false loại bỏ phần tử này 
+    
+    const productsFilter = products.filter(
         product => {
-        // + kiểm tra các trường dữ liệu từ trên xuống dưới -> kiểm tra xem nếu state lọc này đã tồn tại chưa nếu tồn tại rồi sẽ kiểm tra với các trường của product 
-        if(page !== product.page) return false;
+            if(page !== product.page) return false;
 
-        if(keyword.trim() !== '' && !product.name.toLowerCase().includes(keyword.trim().toLowerCase())) return false;
+            if(keyword.trim() !== '' && !product.name.toLowerCase().includes(keyword.trim().toLowerCase())) return false;
 
-        if(minPrice !== null && product.price < minPrice) return false;
-        if(maxPrice !== null && product.price > maxPrice) return false;
+            if(minPrice !== null && product.price < minPrice) return false;
+            if(maxPrice !== null && product.price > maxPrice) return false;
 
-        if(size === null && color === null) return true;
+            if(size !== null && !product.variants.some(variant => variant.size === size)) return false;
+            if(color !== null && !product.variants.some(variant => variant.color === color)) return false;
 
-        // + sử dụng thêm phương thức some để kiểm tra 1 mảng con -> hàm some sẽ duyệt tất cả các trường hợp và chỉ cần 1 trường hợp trả về true thì phương thức trả về true
-        const hasVariant = product.sizes.some(sizeObj => {
-            if(size !== null && parseInt(size) !== sizeObj.size) return false;
+            return true;
+    });
 
-            const hasColor = sizeObj.colors.some(colorObj => {
-                if(color !== null && color !== colorObj.color) return false;
-                return colorObj.stock > 0;
-            })
+    // console.log(productsFilter[0].variants)
 
-            return hasColor;
-        });
-
-        return hasVariant;
-        // -> Với dữ liệu phức tạp cần lọc chỉ cần 1 biến thể của sản phẩm tồn tại và trả về true thì sản phẩm đó vẫn sẽ được thêm vào mảng mới sau khi lọc 
-    })
+    return productsFilter.map(product => {
+        const variant = getVariant(product , size , color) ;
+        
+        return{
+            name : product.name,
+            id: product.id,
+            heading : product.heading,
+            price : product.price,
+            img : product.img,
+            page : product.page,
+            variant : variant
+        }
+    });
 }
 
 export default productFilter
