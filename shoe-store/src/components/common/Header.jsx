@@ -3,10 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUser , FaSearch } from 'react-icons/fa'
 import useFilter from '../../hooks/useFilter'
 import useCartUI from '../../hooks/useCartUI'
+import useCart from '../../hooks/useCart';
 
 const Header = () => {
   const {filter , dispatch} = useFilter();
   const {openCart} = useCartUI();
+  const {cart} = useCart();
 
     return (
     <header className="w-full top-0 sticky z-50 bg-surface dark:bg-background border-b border-surface-container-highest dark:border-outline-variant transition-all duration-300 ease-in-out">
@@ -77,9 +79,16 @@ const Header = () => {
                 <FaSearch className='absolute right-2 pointer-events-none  text-on-surface-variant'></FaSearch>
               </div>
             </div>
-          
-          <button onClick={openCart} className='hover:opacity-70 transition-opacity p-2 cursor-pointer'>
-            <FaShoppingCart className='text-on-surface-variant'></FaShoppingCart>
+          <button
+            onClick={openCart}
+            className="relative hover:opacity-70 transition-opacity p-2 cursor-pointer"
+          >
+            <FaShoppingCart className="text-on-surface-variant text-2xl" />
+            {cart.totalQuantity > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 min-w-5 flex items-center justify-center px-1 border-2 border-white shadow-sm">
+                {cart.totalQuantity > 99 ? '99+' : cart.totalQuantity}
+              </span>
+            )}
           </button>
           <Link to='/' className='hover:opacity-70 transition-opacity p-2'>
             <FaUser className='text-on-surface-variant'></FaUser>

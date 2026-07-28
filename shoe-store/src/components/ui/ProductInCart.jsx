@@ -1,8 +1,18 @@
 
-function ProductInCart({name , price , img , variant , variants}){
+
+function ProductInCart({id , name , price , img , quantity , variant , variants , dispatch}){
     const sizes = [38 , 39 , 40 , 41 , 42 , 43 , 44 , 45];
     const colors = ['black' , 'white' , 'red' , 'gray' , 'blue'];
 
+    let colorsOfSize = variants.filter(val => val.size === variant.size);
+    let sizesOfColor = variants.filter(val => val.color === variant.color);
+
+    const takeSizeVer = (size) => variants.find(val => val.size === size && val.color === variant.color).ver;
+    const takeColorVer = (color) => variants.find(val => val.color === color && val.size === variant.size).ver;
+
+    const downQuantity = (quantity) => quantity === 1 ? 1 : quantity - 1;
+    const upQuantity = (quantity) => quantity === variant.stock ? quantity : quantity + 1;
+    
     const takeColor = (color) => {
         switch(color){
             case 'black':
@@ -19,7 +29,7 @@ function ProductInCart({name , price , img , variant , variants}){
                 return '';
         }
     }
-
+    
     return(
         <>
             <div className="flex gap-4">
@@ -37,7 +47,9 @@ function ProductInCart({name , price , img , variant , variants}){
                                         sizes.map(size => 
                                             <button key={size} 
                                             className={`w-7 h-7 flex items-center justify-center border  text-[10px]  transition-colors 
-                                            ${size === variant.size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest hover:border-primary'} `}>{size}
+                                            ${size === variant.size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container-highest hover:border-primary'} 
+                                            ${!sizesOfColor.some(obj => obj.size === size) ? 'opacity-30 pointer-events-none' : 'cursor-pointer'}`}
+                                            onClick={() => dispatch({type : 'UPDATE_CART_ITEM' , payload : {id , size , quantity , ver : takeSizeVer(size)}})}>{size}
                                             </button>
                                         )
                                     }
@@ -48,7 +60,8 @@ function ProductInCart({name , price , img , variant , variants}){
                                             <button key={color}
                                             className={`w-4 h-4 rounded-full ${takeColor(color)} border border-surface-container-highest ring-offset-1 ring-primary transition-all
                                             ${color === variant.color ? 'ring-1' : 'hover:ring-1'}
-                                            `}>
+                                            ${!colorsOfSize.some(obj => obj.color === color) ? 'opacity-30 pointer-events-none' : 'cursor-pointer' }`}
+                                            onClick={() => dispatch({type : 'UPDATE_CART_ITEM' , payload : {id , color , quantity , ver : takeColorVer(color)}})}>
                                             </button>
                                         )
                                     }
@@ -58,9 +71,9 @@ function ProductInCart({name , price , img , variant , variants}){
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center border border-surface-container-highest mt-2">
-                            <button className="px-2 py-1 hover:bg-surface-container-low">-</button>
-                            <span className="px-3 text-caption">1</span>
-                            <button className="px-2 py-1 hover:bg-surface-container-low">+</button>
+                            <button onClick={() => dispatch({type : 'UPDATE_CART_ITEM' , payload : {id , quantity : downQuantity(quantity)}})} className="px-2 py-1 hover:bg-surface-container-low">-</button>
+                            <span className="px-3 text-caption">{quantity}</span>
+                            <button onClick={() => dispatch({type : 'UPDATE_CART_ITEM' , payload : {id , quantity : upQuantity(quantity)}})} className="px-2 py-1 hover:bg-surface-container-low">+</button>
                         </div>
                         <span className="font-body-md">${price}.00</span>
                     </div>

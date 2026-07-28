@@ -25,7 +25,7 @@ function CartDrawer({isOpen , closeCart}){
             >
                 {/* <!-- Cart Header --> */}
                 <div className="flex items-center justify-between px-margin-desktop py-8 border-b border-surface-container-highest">
-                    <h2 className="font-headline-md text-headline-md font-black tracking-tighter uppercase">Your Cart (1)</h2>
+                    <h2 className="font-headline-md text-headline-md font-black tracking-tighter uppercase">Your Cart ({cart.totalQuantity})</h2>
                     <button onClick={closeCart} className="hover:opacity-70 transition-opacity cursor-pointer">
                         <span className="material-symbols-outlined">close</span>
                     </button>
@@ -38,8 +38,8 @@ function CartDrawer({isOpen , closeCart}){
                         <NoResults></NoResults>
                         : 
                         cart.items.map(item => 
-                            <ProductInCart key={item.data.id} name={item.data.name} price={item.data.price} img={item.data.img} variant={item.data.variant}
-                            variants={item.variants}></ProductInCart>
+                            <ProductInCart key={item.data.variant.ver} id={item.data.id} name={item.data.name} price={item.data.price} img={item.data.img} quantity={item.data.quantity} variant={item.data.variant}
+                            variants={item.variants} dispatch={dispatch}></ProductInCart>
                         )
                     }
                     
@@ -49,11 +49,11 @@ function CartDrawer({isOpen , closeCart}){
                 <div className="p-margin-mobile border-t border-surface-container-highest bg-surface-container-lowest">
                         <div className="flex justify-between items-center mb-6">
                             <span className="font-label-sm uppercase tracking-widest">Subtotal</span>
-                            <span className="font-headline-md">$605.00</span>
+                            <span className="font-headline-md">${cart.totalPrice}.00</span>
                         </div>
                     <div className="space-y-3">
                         <button className="w-full bg-secondary-container text-on-secondary-container font-label-sm py-4 uppercase tracking-widest hover:opacity-90 transition-opacity">Proceed to Checkout</button>
-                        <button className="w-full border border-primary text-primary font-label-sm py-4 uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">Continue Shopping</button>
+                        <button onClick={() => dispatch({type : 'CLEAR_CART'})} className="w-full border cursor-pointer border-primary text-primary font-label-sm py-4 uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">Clear all product</button>
                     </div>
                 </div>
             </div>

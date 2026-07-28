@@ -32,7 +32,7 @@ function ProductCard({ id, name, img, heading, price, variant , variants}) {
                 onClick={() => {
                 if (!isOutOfStock) {
                     dispatch({
-                    type: 'Add-cart',
+                    type: 'ADD_TO_CART',
                     payload: { id, img, name, price, variant , variants },
                     });
                 }
