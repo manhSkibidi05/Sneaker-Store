@@ -1,11 +1,13 @@
 import useCart from '../../hooks/useCart';
+import { useNavigate } from 'react-router-dom'
 
 function ProductCard({ id, name, img, heading, price, variant , variants}) {
+    const navigate = useNavigate()
     const { dispatch } = useCart();
     const isOutOfStock = variant.stock === 0; 
 
     return (
-        <div className="product-card flex flex-col gap-4 group cursor-pointer">
+        <div onClick={() => navigate(`/products/${id}`)} className="product-card flex flex-col gap-4 group cursor-pointer">
             <div className="relative w-full aspect-4/5 bg-surface-container overflow-hidden shadow-sm transition-shadow hover:shadow-xl">
             {/* Ảnh sản phẩm */}
             <div
@@ -23,13 +25,14 @@ function ProductCard({ id, name, img, heading, price, variant , variants}) {
             )}
 
             {/* Overlay khi hover */}
-            <div
+            <div 
             className={`product-overlay absolute inset-0 bg-black/20 transition-opacity duration-300 flex flex-col justify-end p-6 ${
                 isOutOfStock ? 'opacity-100 bg-black/40' : 'opacity-0 group-hover:opacity-100'
             }`}
             >
             <button
-                onClick={() => {
+                onClick={(e) => {
+                e.stopPropagation();
                 if (!isOutOfStock) {
                     dispatch({
                     type: 'ADD_TO_CART',

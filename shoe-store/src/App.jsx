@@ -4,7 +4,8 @@ import { Routes , Route } from 'react-router-dom';
 import Layout from './components/common/Layout.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx'
+import Contact from './pages/Contact.jsx';
+import Product from './pages/Product.jsx'
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route index element={<Home/>}></Route>
         <Route path='about' element={<About/>}></Route>
         <Route path='contact' element={<Contact/>}></Route>
+        <Route path='products/:id' element={<Product/>}></Route>
       </Route>
     </Routes>
   )

@@ -7,7 +7,9 @@ import productFilter from '../utils/productFilter'
 import {FaCheck } from 'react-icons/fa'
 
 
+
 function Home(){
+    
     const {stateProducts} = useProduct();
     const {filter , dispatch} = useFilter();
     const productsFilter = productFilter(stateProducts , filter);
@@ -119,7 +121,7 @@ function Home(){
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
                             {
                                 productsFilter.map(product => 
-                                    <ProductCard key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading} 
+                                    <ProductCard  key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} heading={product.heading} 
                                     variant={product.variant} variants={getVariants(product.id)}>
                                     </ProductCard>
                                 )
