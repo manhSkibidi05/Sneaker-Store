@@ -36,7 +36,7 @@ function ProductCard({ id, name, img, heading, price, variant , variants}) {
                 if (!isOutOfStock) {
                     dispatch({
                     type: 'ADD_TO_CART',
-                    payload: { id, img, name, price, variant , variants },
+                    payload: { id, img, name, price, variant , variants , quantity : 1 },
                     });
                 }
                 }}

@@ -1,30 +1,75 @@
-import { useParams } from "react-router-dom"
+import { useParams , Link} from "react-router-dom";
+import { useState } from "react";
+import useProduct from "../hooks/useProduct";
+import useCart from "../hooks/useCart";
+import { getVariant } from "../utils/productFilter";
+import { products } from "../data/products";
 
 function Product(){
-    const params = useParams()
+    const [quantity , setQuantity] = useState(1);
+    const [color , setColor] = useState(null);
+    const [size , setSize] = useState(null);
+    const params = useParams();
+    const {stateProducts} = useProduct();
+    const {dispatch} = useCart();
+
+    const productState = stateProducts.find(value => value.id === parseInt(params.id));
+
+    const variant = getVariant(productState , size , color);
+
+    const variantsOfSize = productState.variants.filter(v => v.size === variant.size);
+    const variantsOfColor = productState.variants.filter(v => v.color === variant.color);
+
+    const sizes = [38 , 39 , 40 , 41 , 42 , 43 , 44 , 45];
+    const colors = ['black' , 'white' , 'red' , 'gray' , 'blue'];
+    const takeColor = (color) => {
+        switch(color){
+            case 'black':
+                return 'bg-black';
+            case 'white':
+                return 'bg-white';
+            case 'red' :
+                return 'bg-red-500';
+            case 'gray' :
+                return 'bg-[#C0C0C0]';
+            case 'blue' :
+                return 'bg-secondary';
+            default:
+                return '';
+        }
+    }
+
     return (
         <>
+            {/* <!-- Breadcrumb --> */}
+            <nav className="mb-12">
+                <ol className="flex gap-2 font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant opacity-60">
+                    <Link to='/' className="hover:text-primary transition-colors">Collections / All Sneakers</Link>
+                    <li className="opacity-50">/</li>
+                    <li className="text-primary font-extrabold">{productState.name}</li>
+                </ol>
+            </nav>
             {/* <!-- Product Grid Section --> */}
             <section className="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-start">    
                 {/* <!-- Sticky Gallery Column --> */}
                 <div className="space-y-gutter lg:sticky lg:top-28">
                     <div className="aspect-4/5 bg-surface-container overflow-hidden">
-                        <img className="w-full h-full object-cover"  />
+                        <img className="w-full h-full object-cover" src={productState.img} />
                     </div>
                     <div className="grid grid-cols-2 gap-gutter">
                         <div className="aspect-square bg-surface-container">
-                            <img className="w-full h-full object-cover" />
+                            <img className="w-full h-full object-cover" src={productState.img2}/>
                         </div>
                         <div className="aspect-square bg-surface-container">
-                            <img className="w-full h-full object-cover" />
+                            <img className="w-full h-full object-cover" src={productState.img3}/>
                         </div>
                     </div>
                 </div>
                 {/* <!-- Purchase Column --> */}
                 <div className="lg:pl-stack-lg flex flex-col pt-8 lg:pt-0">
                     <header className="mb-stack-lg border-b border-surface-container pb-stack-lg">
-                        <h1 className="font-headline-lg text-headline-lg uppercase font-bold tracking-tight mb-2">MONOLITH 01</h1>
-                        <p className="font-headline-md text-headline-md text-primary">$285.00</p>
+                        <h1 className="font-headline-lg text-headline-lg uppercase font-bold tracking-tight mb-2">{productState.name}</h1>
+                        <p className="font-headline-md text-headline-md text-primary">${productState.price}.00</p>
                     </header>
                     <div className="mb-12 space-y-stack-md">
                         <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
@@ -33,44 +78,51 @@ function Product(){
                     </div>
                     {/* <!-- Color Selector --> */}
                     <div className="mb-10">
-                        <span className="block font-label-sm text-label-sm uppercase mb-4">Color: <span>White</span></span>
+                        <span className="block font-label-sm text-label-sm uppercase mb-4">Color: <span>{variant.color}</span></span>
                         <div className="flex gap-4">
-                            <button className="w-8 h-8 bg-[#F5F5F5] border border-primary outline outline-offset-2 outline-primary rounded-none transition-all" title="White"></button>
-                            <button className="w-8 h-8 bg-[#111111] border border-surface-container hover:outline hover:outline-offset-2 hover:outline-outline transition-all" title="Black"></button>
-                            <button className="w-8 h-8 bg-[#A0A0A0] border border-surface-container hover:outline hover:outline-offset-2 hover:outline-outline transition-all" title="Gray"></button>
-                            <button className="w-8 h-8 bg-[#405F8C] border border-surface-container hover:outline hover:outline-offset-2 hover:outline-outline transition-all" title="Blue"></button>
+                            {
+                                colors.map(color => 
+                                    <button key={color}  
+                                    className={`w-8 h-8 cursor-pointer ${takeColor(color)}  border border-surface-container-highest ring-offset-2 ring-primary transition-all 
+                                    ${variant.color === color ? 'ring-1' : 'hover:ring-1' } 
+                                    ${!variantsOfSize.some(v => v.color === color && v.stock > 0) && 'opacity-30 pointer-events-none'} `}
+                                    onClick={() => setColor(color)}>
+                                    </button>
+                                )
+                            }
                         </div>
                     </div>
                     {/* <!-- Size Selector --> */}
                     <div className="mb-10">
                         <div className="flex justify-between mb-4">
                             <span className="font-label-sm text-label-sm uppercase">Select Size (EU)</span>
-                            <button className="font-label-sm text-label-sm uppercase underline opacity-70 hover:opacity-100">Size Guide</button>
                         </div>
                         <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">38</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">39</button>
-                            <button className="h-12 border border-primary bg-primary text-on-primary flex items-center justify-center font-body-md text-body-md">40</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">41</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">42</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">43</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md hover:border-primary transition-colors">44</button>
-                            <button className="h-12 border border-surface-container flex items-center justify-center font-body-md text-body-md opacity-30 cursor-not-allowed">45</button>
+                            {
+                                sizes.map(size => 
+                                    <button key={size} className={`h-12 border cursor-pointer flex items-center justify-center font-body-md text-body-md transition-colors
+                                    ${variant.size === size ? 'border-primary bg-primary text-on-primary' : 'border-surface-container hover:border-primary'} 
+                                    ${!variantsOfColor.some(v => v.size === size && v.stock > 0) && 'opacity-30 pointer-events-none' }`}
+                                    onClick={() => setSize(size)}>{size}
+                                    </button>
+                                )
+                            }
                         </div>
                     </div>
                     {/* <!-- Actions --> */}
                     <div className="flex flex-col gap-4 mb-16">
                         <div className="flex gap-gutter">
                             <div className="flex items-center border border-surface-container h-14">
-                                <button className="px-4 hover:bg-surface-container transition-colors">
+                                <button onClick={() => setQuantity(quantity => quantity === 1 ? 1 : quantity - 1)} className="px-4 hover:bg-surface-container transition-colors">
                                     <span className="material-symbols-outlined text-sm">remove</span>
                                 </button>
-                                <span className="w-8 text-center font-body-md font-bold">1</span>
-                                <button className="px-4 hover:bg-surface-container transition-colors">
+                                <span className="w-8 text-center font-body-md font-bold">{quantity}</span>
+                                <button onClick={() => setQuantity(quantity => quantity === variant.stock ? variant.stock : quantity + 1)} className="px-4 hover:bg-surface-container transition-colors">
                                     <span className="material-symbols-outlined text-sm">add</span>
                                 </button>
                             </div>
-                            <button className="flex-1 bg-primary text-on-primary h-14 font-label-sm text-label-sm uppercase tracking-widest hover:bg-on-surface-variant transition-colors duration-300">
+                            <button onClick={() => dispatch({type : 'ADD_TO_CART' , payload : {id : productState.id , name : productState.name , price : productState.price , img : productState.img , variant , variants : productState.variants , quantity}})} 
+                            className="flex-1 bg-primary text-on-primary h-14 font-label-sm text-label-sm uppercase tracking-widest hover:bg-on-surface-variant transition-colors duration-300">
                                 Add To Cart
                             </button>
                         </div>
@@ -79,6 +131,8 @@ function Product(){
                             Add to Wishlist
                         </button>
                     </div>
+                    {/* cảnh báo khi số lượng sản phẩm lớn hơn mức tồn kho */}
+                    {quantity === variant.stock && <div className="mt-2 text-12 text-error uppercase tracking-widest opacity-80 ">Maximum stock reached</div>}
                     {/* <!-- Accordion Details --> */}
                     <div className="border-t border-surface-container">
                         <div className="accordion-item border-b border-surface-container">

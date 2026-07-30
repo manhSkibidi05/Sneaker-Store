@@ -11,7 +11,7 @@ const initialCart = {
 function reducer(state , action){
     switch(action.type){
         case 'ADD_TO_CART' : {
-            const {id , name , price , img , variant , variants} = action.payload;
+            const {id , name , price , img , variant , variants , quantity} = action.payload;
 
             const existingItemIndex = state.items.findIndex(
                 item => item.data.id === id && item.data.variant.ver === variant.ver
@@ -29,7 +29,7 @@ function reducer(state , action){
                 const newItem = {
                     data : {
                         id, name, price, img, variant,
-                        quantity : 1
+                        quantity 
                     },
                     variants 
                 };

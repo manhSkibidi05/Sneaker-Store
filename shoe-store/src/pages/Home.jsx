@@ -3,7 +3,7 @@ import ButtonAll from '../components/ui/ButtonAll'
 import NoResults from '../components/ui/NoResults'
 import useProduct from '../hooks/useProduct'
 import useFilter from '../hooks/useFilter'
-import productFilter from '../utils/productFilter'
+import {productFilter} from '../utils/productFilter'
 import {FaCheck } from 'react-icons/fa'
 
 
@@ -72,8 +72,16 @@ function Home(){
                         <div className="border-b border-surface-container-highest pb-stack-md">
                             <h3 className="font-label-sm text-label-sm uppercase tracking-widest mb-stack-md">Color</h3>
                             <div className="flex flex-wrap gap-2">
-                                <button onClick={() => dispatch({type : 'Color-filter' , payload : null})} 
-                                className={`w-6 h-6 cursor-pointer  border border-surface-container-highest ring-offset-2 ring-primary transition-all ${filter.color === null ? 'ring-1' : 'hover:ring-1' }`}></button>
+                                <button 
+                                onClick={() => dispatch({type: 'Color-filter', payload: null})} 
+                                className={`relative w-6 h-6 cursor-pointer border border-surface-container-highest ring-offset-2 ring-primary transition-all flex items-center justify-center ${
+                                    filter.color === null ? 'ring-1' : 'hover:ring-1'
+                                }`}
+                                >
+                                    <span className="text-on-surface-variant text-xs font-bold leading-none">
+                                        ✕
+                                    </span>
+                                </button>
                                 {
                                     colors.map(color => 
                                         <button key={color} onClick={() => dispatch({type : 'Color-filter' , payload : color})} 
